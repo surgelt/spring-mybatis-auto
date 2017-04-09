@@ -4,7 +4,7 @@ spring:
   datasource:  
     name: mydb  
     type: com.alibaba.druid.pool.DruidDataSource  
-    url: jdbc:mysql://127.0.0.1:3306/lttest  
+    url: jdbc:mysql://127.0.0.1:3306/test  
     username: root  
     password: tom7323548  
     driver-class-name: com.mysql.jdbc.Driver  
