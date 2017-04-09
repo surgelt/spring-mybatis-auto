@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.learn.spring.mybatis.dao.StudentHealthMaleMapper">
+	<resultMap id="BaseResultMap"
+		type="com.learn.spring.mybatis.model.StudentHealthMale">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="student_id" jdbcType="INTEGER" property="studentId" />
+		<result column="check_date" jdbcType="TIMESTAMP" property="checkDate" />
+		<result column="heart" jdbcType="VARCHAR" property="heart" />
+		<result column="liver" jdbcType="VARCHAR" property="liver" />
+		<result column="spleen" jdbcType="VARCHAR" property="spleen" />
+		<result column="lung" jdbcType="VARCHAR" property="lung" />
+		<result column="kindey" jdbcType="VARCHAR" property="kindey" />
+		<result column="prostate" jdbcType="VARCHAR" property="prostate" />
+		<result column="note" jdbcType="VARCHAR" property="note" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, student_id, check_date, heart, liver, spleen, lung, kindey, prostate,
+		note
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_student_health_male
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="selectByStudentId" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_student_health_male
+		where student_id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from t_student_health_male
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.learn.spring.mybatis.model.StudentHealthMale">
+		insert into t_student_health_male (id, student_id, check_date,
+		heart, liver, spleen,
+		lung, kindey, prostate,
+		note)
+		values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=INTEGER},
+		#{checkDate,jdbcType=TIMESTAMP},
+		#{heart,jdbcType=VARCHAR}, #{liver,jdbcType=VARCHAR}, #{spleen,jdbcType=VARCHAR},
+		#{lung,jdbcType=VARCHAR}, #{kindey,jdbcType=VARCHAR},
+		#{prostate,jdbcType=VARCHAR},
+		#{note,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.learn.spring.mybatis.model.StudentHealthMale">
+		insert into t_student_health_male
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="studentId != null">
+				student_id,
+			</if>
+			<if test="checkDate != null">
+				check_date,
+			</if>
+			<if test="heart != null">
+				heart,
+			</if>
+			<if test="liver != null">
+				liver,
+			</if>
+			<if test="spleen != null">
+				spleen,
+			</if>
+			<if test="lung != null">
+				lung,
+			</if>
+			<if test="kindey != null">
+				kindey,
+			</if>
+			<if test="prostate != null">
+				prostate,
+			</if>
+			<if test="note != null">
+				note,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="studentId != null">
+				#{studentId,jdbcType=INTEGER},
+			</if>
+			<if test="checkDate != null">
+				#{checkDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="heart != null">
+				#{heart,jdbcType=VARCHAR},
+			</if>
+			<if test="liver != null">
+				#{liver,jdbcType=VARCHAR},
+			</if>
+			<if test="spleen != null">
+				#{spleen,jdbcType=VARCHAR},
+			</if>
+			<if test="lung != null">
+				#{lung,jdbcType=VARCHAR},
+			</if>
+			<if test="kindey != null">
+				#{kindey,jdbcType=VARCHAR},
+			</if>
+			<if test="prostate != null">
+				#{prostate,jdbcType=VARCHAR},
+			</if>
+			<if test="note != null">
+				#{note,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.learn.spring.mybatis.model.StudentHealthMale">
+		update t_student_health_male
+		<set>
+			<if test="studentId != null">
+				student_id = #{studentId,jdbcType=INTEGER},
+			</if>
+			<if test="checkDate != null">
+				check_date = #{checkDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="heart != null">
+				heart = #{heart,jdbcType=VARCHAR},
+			</if>
+			<if test="liver != null">
+				liver = #{liver,jdbcType=VARCHAR},
+			</if>
+			<if test="spleen != null">
+				spleen = #{spleen,jdbcType=VARCHAR},
+			</if>
+			<if test="lung != null">
+				lung = #{lung,jdbcType=VARCHAR},
+			</if>
+			<if test="kindey != null">
+				kindey = #{kindey,jdbcType=VARCHAR},
+			</if>
+			<if test="prostate != null">
+				prostate = #{prostate,jdbcType=VARCHAR},
+			</if>
+			<if test="note != null">
+				note = #{note,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.learn.spring.mybatis.model.StudentHealthMale">
+		update t_student_health_male
+		set student_id = #{studentId,jdbcType=INTEGER},
+		check_date = #{checkDate,jdbcType=TIMESTAMP},
+		heart = #{heart,jdbcType=VARCHAR},
+		liver = #{liver,jdbcType=VARCHAR},
+		spleen = #{spleen,jdbcType=VARCHAR},
+		lung = #{lung,jdbcType=VARCHAR},
+		kindey = #{kindey,jdbcType=VARCHAR},
+		prostate = #{prostate,jdbcType=VARCHAR},
+		note = #{note,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+</mapper>
